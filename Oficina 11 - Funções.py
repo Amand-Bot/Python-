@@ -7,17 +7,25 @@ agenda = [
   ((2020, 3, 17), (13, 20), 'Consulta de revisão com dentista')
 ]
 
-meses = ['jan', 'fev', 'mar', 'abr','mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
-def formatar_data(ano,mes,dia):
-  for x in range(len(meses)+1):
-    if mes == x:
-      mes = meses[x]
-      print(f'{dia}/{mes}/{ano}')
+meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
 
-formatar_data(2020, 1, 15)
-def formatar_hora(hora, minuto):
-  print(f'{hora}:{minuto}')
+def formatar_data(data):
+  for x in range(1, len(meses)):
+    if data[1] == x:
+      return f'{data[2]}/{meses[x-1]}/{data[0]}'
 
 
+def formatar_hora(hora):
+  return f'{hora[0]}:{hora[1]}'
 
-#def imprimir_eventos(eventos, de_data=(1, 1, 1), ate_data=(9999, 12, 31)):
+
+def imprimir_eventos(agenda, de_data=(1, 1, 1), ate_data=(9999, 12, 31)):
+  for x in range(len(agenda)):
+    if de_data[1] <= agenda[x][0][1] and de_data[2] <= agenda[x][0][2]:
+        print(f'{formatar_data(agenda[x][0])} - '
+              f'{formatar_hora(agenda[x][1])}\t:'
+              f' {agenda[x][2]}')
+  
+
+
+imprimir_eventos(agenda, (2020, 1, 25), (2020, 3, 15))
