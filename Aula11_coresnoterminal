@@ -1,5 +1,5 @@
 #Cores no terminal
-#\033[0(estilo);33(código do texto);44(plano de fundo)m
+#\033[0(estilo);33(código do texto);44(plano de fundo)\033[m
 
 estilo - 0 = nenhum
 1 = negrito
